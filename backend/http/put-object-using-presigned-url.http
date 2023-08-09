@@ -1,0 +1,12 @@
+PUT http://rosie-bucket.localhost:4566/narutomaki.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230809T064956Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=600&X-Amz-Credential=AKIA5TCHOFCCLPS5HDHK%2F20230809%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Signature=bc94b93fea327321e9ba8157186d7406e8bad196c5f6b46e1f417d06eb2172f5
+Content-Type: image/png; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="data"; filename="narutomaki.png"
+
+< ./narutomaki.png
+--WebAppBoundary--
+
+###
+
+

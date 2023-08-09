@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.1.2'
+    id 'io.spring.dependency-management' version '1.1.2'
+}
+
+group = 'com.kyy00n'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    compileOnly 'software.amazon.awssdk:s3:2.20.121'
+
+    // 이거 안넣으면 s3 client 생성시 에러남, https://github.com/aws/aws-sdk-java-v2/issues/446#issuecomment-772758958
+    compileOnly 'software.amazon.awssdk:url-connection-client:2.20.121'
+    testImplementation 'io.rest-assured:rest-assured'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
