@@ -56,8 +56,6 @@ yarn install && yarn start
 ## Classical way - through Spring Boot application
 
 
-
-
 ## Improved way - directly upload to S3 (In progress..)
 
 <img src="./img.png">
