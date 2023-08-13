@@ -1,7 +1,6 @@
 package com.kyy00n.s3putobjectbysdk.s3;
 
 import java.io.IOException;
-import java.net.URI;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import software.amazon.awssdk.core.sync.RequestBody;
@@ -11,10 +10,11 @@ import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 @Component
 public class S3Uploader {
 
-    private S3Client s3 = S3Client.builder()
-            .endpointOverride(URI.create("http://localhost:4566"))
-            .forcePathStyle(true)
-            .build();
+    private final S3Client s3Client;
+
+    public S3Uploader(final S3Client s3Client) {
+        this.s3Client = s3Client;
+    }
 
     private String bucketName = "rosie-bucket";
 
@@ -25,7 +25,7 @@ public class S3Uploader {
                 .contentType("image/png")
                 .build();
 
-        s3.putObject(objectRequest, RequestBody.fromBytes(getBytes(file)));
+        s3Client.putObject(objectRequest, RequestBody.fromBytes(getBytes(file)));
     }
 
     private byte[] getBytes(final MultipartFile file) {

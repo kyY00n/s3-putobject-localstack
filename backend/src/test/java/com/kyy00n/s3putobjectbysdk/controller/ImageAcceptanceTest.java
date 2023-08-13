@@ -16,39 +16,6 @@ import static org.hamcrest.Matchers.equalTo;
 public class ImageAcceptanceTest {
 
     @Test
-    void presigned_url_얻기() {
-        Response response = given()
-                .when()
-                .get("http://localhost:8080/presigned-url?name=presigned-url-test");
-
-        response.then()
-                .statusCode(200);
-    }
-
-    @Test
-    void presigned_url로_바로_업로드() {
-        Response response1 = given()
-                .when()
-                .get("http://localhost:8080/presigned-url?name=presigned-url-test");
-
-        response1.then()
-                .statusCode(200);
-
-        String url = response1.jsonPath().getString("url");
-
-        File imageFile = new File("/Users/oieuoa/dev/s3-put-object-by-sdk/http/narutomaki.png");
-
-        Response response2 = given()
-                .multiPart("name", "narutomaki.png")
-                .multiPart("imageFile", imageFile)
-                .when()
-                .put(url);
-
-        response2.then()
-                .statusCode(200);
-    }
-
-    @Test
     void upload_via_server() {
         File imageFile = new File("/Users/oieuoa/dev/s3-put-object-by-sdk/http/narutomaki.png");
 
