@@ -42,25 +42,3 @@ And this application will upload a file to localstack s3 by using aws sdk.
 ```bash
 cd ../backend && ./gradlew bootRun
 ```
-
-### Run frontend(React) application
-```bash
-npm install yarn
-```
-
-```bash
-yarn install && yarn start
-```
-
-
-## Classical way - through Spring Boot application
-
-
-## Improved way - directly upload to S3 (In progress..)
-
-<img src="./img.png">
-
-## References
-https://docs.localstack.cloud/overview/
-https://tech.inflab.com/202202-integration-test-with-localstack/
-https://aws.amazon.com/ko/blogs/compute/uploading-to-amazon-s3-directly-from-a-web-or-mobile-application/
